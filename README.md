@@ -1,6 +1,8 @@
 # Fine-grained-Classification
 The main project of Artificial Neural Network course in SYSU, solved the fine-grained visual classification task. Proudly by Tianxing Yang, Zihao Liang and Haoyu Chen.
 
+Presentation slides used to discuss with teacher are under directory ./presentation/
+
 ## Introduction
 ### Step 1&2
 
@@ -12,12 +14,23 @@ Use sahi to change annotations of two datasets to COCO format, use MMdetection f
 
 ### Step 4
 
-(to be completed ...)
+We first tried using MMagic framework to train BigGAN 256*256 model, but it came with fluctuating FID value and low-quality pictures. For this method, we use the original dataset as conditional dataset, which means we used all training set as input and marked them with corresponding labels.
+
+Later, we switched to use DCGAN method, we used formally cropped spuare images as input. Compared to above method, we trained one model for each classes. The hyperparameters are shown in the training code. The outcome is not satisfying so we do not add them to our train set in later steps.
+
+### Step 5
+
+In this stage, we tried with different model of ViTs, including "vit_base_patch16_224", "vit_large_patch16_224", "vit_base_patch32_224" and "vit_small_patch16_224". Both of them are pretrained by Google on imagenet-1k dataset. We tried these model on Stanford Dogs dataset and CUB-200-2011 dataset. As we focus on the accuracy of test set, we found that the accuracy get higher at the first epoch, but soon decrease to lower level as the fine-tuning process goes. Through the accuracy rate may get moderate growth at later epoches, the accuracy rate is still lower than the first epoch.
+
+The decrease in validation accuracy over epochs while training accuracy is increasing could be a sign of overfitting. This happens when the model learns to fit the noise in the training data too well, thus performing poorly on unseen data. It's worth noting that the Vision Transformer (ViT) model might not be the best choice for a dataset like Stanford Dogs, especially if it's a smaller dataset. ViTs generally work better on larger datasets, and convolutional neural networks (CNNs) could be more suitable for smaller datasets. So we will switch to original Resnet model for rest of stages.
+
+### Step 6
+
+### Step 7
 
 
 ## Introduction
-
-**IMPORTANT**: Some files list below can not be found in the GitHub repository because it is too large. We refer you download it from 43.134.189.32:12345.
+**IMPORTANT**: Some files list below can not be found in the GitHub repository because it is too large. We refer you download it from my server: http://43.134.189.32:12345.
 
 ### Step 1&2
 > Various training tricks to improve model performance
@@ -88,7 +101,51 @@ Train & Set result for square cropped pictures: Tensorboard under directory ./ru
 ### Step 4
 > Synthetic image generation as part of data augmentation
 
-(to be completed ...)
+(BigGAN)
+
+FID value curve: ./presentation/img/pic2.png
+
+Generated images sample: ./presentation/img/pic3.png
+
+(DCGAN)
+
+DCGAN code: ./legacy/task4/{bird, dogs}/dcgan.py
+
+Results(generator and discriminator losses, scores, etc.): ./legacy/task4/{bird, dogs}/result.txt
+
+Generated images sample: pictures under ./legacy/task4/{bird, dogs}/
+
+### Step 5
+> ViT model backbone vs. CNN backbone: explore how to effectively use ViT
+
+(vit_base_patch16_224)
+
+Code: ./legacy/task5/base_16_224/
+
+Tensorboard: ./runs/task5/base_16_224/
+
+(vit_large_patch16_224)
+
+Code: ./legacy/task5/large_16_224/
+
+Tensorboard: ./runs/task5/large_16_224/
+
+(vit_base_patch32_224)
+
+Code: ./legacy/task5/base_32_224/
+
+Tensorboard: ./runs/task5/base_32_224/
+
+(vit_small_patch16_224)
+
+Code: ./legacy/task5/small_16_224/
+
+Tensorboard: ./runs/task5/small_16_224/
+
+
+### Step 6
+
+### Step 7
 
 ## Install Environment
 
@@ -100,5 +157,3 @@ Train & Set result for square cropped pictures: Tensorboard under directory ./ru
 - MMDetection: Open MMLab Detection Toolbox and Benchmark
 - Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks
 - Slicing Aided Hyper Inference and Fine-tuning for Small Object Detection
-
-

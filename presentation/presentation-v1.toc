@@ -1,0 +1,7 @@
+\beamer@sectionintoc {1}{Task 1\&2: Baseline and Fine-tune}{3}{0}{1}
+\beamer@sectionintoc {2}{Task 3: Object Detection}{8}{0}{2}
+\beamer@sectionintoc {3}{Task 4: Synthetic Images}{13}{0}{3}
+\beamer@sectionintoc {4}{Task 5: Efficiently use ViT}{17}{0}{4}
+\beamer@sectionintoc {5}{Task 6: Interpretation of the model}{18}{0}{5}
+\beamer@sectionintoc {6}{Task 7: Robustness of the model}{19}{0}{6}
+\beamer@sectionintoc {7}{Discussions}{21}{0}{7}
