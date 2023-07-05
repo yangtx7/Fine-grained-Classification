@@ -32,6 +32,8 @@ After fine-tuning the model, we extracted the last fully connected layer and tra
 
 ### Step 7
 
+The Fast Gradient Sign Method (FGSM) is a simple yet effective method for generating adversarial examples, which are then used to train the model in order to improve its robustness. We use it as attack method to test our model.
+
 
 ## Introduction
 **IMPORTANT**: Some files list below can not be found in the GitHub repository because it is too large. We refer you download it from my server: http://43.134.189.32:12345.
@@ -157,6 +159,9 @@ Code: ./legacy/task6/
 ### Step 7
 > Robustness of the model: adversarial examples as input, (optional) improve robustness
 
+Tensorboard: ./runs/task7/
+
+Code: ./legacy/task7/
 
 ## References
 - Deep Residual Learning for Image Recognition
