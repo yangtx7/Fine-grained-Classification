@@ -26,6 +26,10 @@ The decrease in validation accuracy over epochs while training accuracy is incre
 
 ### Step 6
 
+Class Activation Mapping (CAM) is a technique that helps visualize which regions in the input image have contributed the most (or least) to the final class prediction by the Convolutional Neural Network (CNN). It essentially overlays a heat-map on top of the input image where hot spots indicate areas that have heavily influenced the prediction.
+
+After fine-tuning the model, we extracted the last fully connected layer and transformed it into a convolutional layer with 1x1 kernel. This is because we are interested in the spatial information, which is lost when the output is passed through the fully connected layer. Then we generate output feature maps for the image, the class activation map for the most probable class is resized to the original image size.
+
 ### Step 7
 
 
@@ -144,12 +148,15 @@ Tensorboard: ./runs/task5/small_16_224/
 
 
 ### Step 6
+> Interpretation of the model: visualization of model predictions
+
+Figures: ./runs/task6/
+
+Code: ./legacy/task6/
 
 ### Step 7
+> Robustness of the model: adversarial examples as input, (optional) improve robustness
 
-## Install Environment
-
-(to be completed ...)
 
 ## References
 - Deep Residual Learning for Image Recognition
